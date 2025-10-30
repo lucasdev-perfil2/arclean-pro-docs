@@ -1,6 +1,11 @@
-import { openDB, DBSchema, IDBPDatabase } from 'idb';
-import { AppData, Service, Quote, Company, Settings } from './types';
+import { openDB, type DBSchema, type IDBPDatabase } from 'idb';
+import type { AppData, Service, Quote, Company, Settings } from './types';
 import { seedData } from './seed';
+
+interface SettingsRecord {
+  key: string;
+  [key: string]: any;
+}
 
 interface ArCleanDB extends DBSchema {
   services: {
@@ -15,7 +20,7 @@ interface ArCleanDB extends DBSchema {
   };
   settings: {
     key: string;
-    value: Company | Settings;
+    value: SettingsRecord;
   };
 }
 

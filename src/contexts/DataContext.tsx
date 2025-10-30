@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Service, Quote, Company, Settings } from '@/lib/types';
+import React, { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import type { Service, Quote, Company, Settings } from '@/lib/types';
 import * as db from '@/lib/db';
 import { toast } from '@/hooks/use-toast';
 

@@ -1,3 +1,4 @@
+// Service interface for catalog items
 export interface Service {
   id: string;
   name: string;
