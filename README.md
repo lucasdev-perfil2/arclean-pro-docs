@@ -1,73 +1,183 @@
-# Welcome to your Lovable project
+# ArClean - Sistema de Gestão de Orçamentos
 
-## Project info
+Sistema profissional para gestão de orçamentos e ordens de serviço, desenvolvido para **Allan Clauzen** e focado em serviços de ar-condicionado.
 
-**URL**: https://lovable.dev/projects/ff52bcc7-b5b4-4a03-bdc4-d17cf4c5b4ed
+## 🚀 Funcionalidades
 
-## How can I edit this code?
+### ✅ Implementado
+- **Dashboard**: Visão geral com estatísticas e acesso rápido
+- **Gestão de Serviços**: CRUD completo com 59 serviços pré-cadastrados
+- **Catálogo Organizado**: Serviços agrupados por categoria e subcategoria
+- **Edição Inline**: Preços editáveis diretamente na lista
+- **Busca Avançada**: Pesquisa por nome, categoria ou subcategoria
+- **Histórico**: Listagem completa de todos os orçamentos
+- **Configurações**: Dados da empresa, logo, sequência de OS
+- **Backup/Restauração**: Export/Import JSON completo
+- **PWA**: App instalável com funcionamento offline
+- **Persistência**: IndexedDB com fallback para localStorage
+- **Design Responsivo**: Otimizado para desktop e mobile
 
-There are several ways of editing your application.
+### 🔧 Em Desenvolvimento
+- **Builder de Orçamento**: Interface para criação de OS com:
+  - Dados do cliente
+  - Seleção de serviços
+  - Cálculos automáticos (subtotal, desconto, impostos, taxa)
+  - Autosave
+- **Preview PDF**: Visualização WYSIWYG antes da exportação
+- **Exportação PDF**: Multipágina, profissional, com layout completo
+- **Exportação Excel**: Via SheetJS
+- **Compartilhamento**: Web Share API + fallback WhatsApp
 
-**Use Lovable**
+## 🎨 Design System
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ff52bcc7-b5b4-4a03-bdc4-d17cf4c5b4ed) and start prompting.
+### Cores
+- **Primary**: Verde-azulado (#0B7A75) - Confiança e profissionalismo
+- **Accent**: Laranja suave - CTAs e destaques
+- **Background**: Gradientes sutis
+- **Tipografia**: Inter (moderna e legível)
 
-Changes made via Lovable will be committed automatically to this repo.
+### Componentes
+- Design system completo em `src/index.css`
+- Tokens semânticos (nunca cores diretas)
+- Componentes shadcn customizados
+- Animações suaves e transições
 
-**Use your preferred IDE**
+## 📦 Tecnologias
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- **Frontend**: React 18 + TypeScript + Vite
+- **Styling**: Tailwind CSS + Design System
+- **UI**: shadcn/ui
+- **Database**: IndexedDB (idb)
+- **PDF**: jsPDF + html2canvas
+- **Excel**: SheetJS (xlsx)
+- **PWA**: Service Worker + Manifest
+- **IDs**: uuid
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Como Usar
 
-Follow these steps:
+### Desenvolvimento Local
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+```bash
+# Instalar dependências
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Iniciar dev server
 npm run dev
+
+# Build para produção
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+### PWA - Instalação no Dispositivo
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+#### Android
+1. Abra o app no Chrome
+2. Menu (⋮) → "Adicionar à tela inicial"
+3. O app será instalado como um app nativo
 
-**Use GitHub Codespaces**
+#### iOS
+1. Abra o app no Safari
+2. Compartilhar → "Adicionar à Tela de Início"
+3. O app será instalado na tela inicial
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Funcionalidades Offline
+- Todos os dados são salvos localmente (IndexedDB)
+- Service Worker faz cache dos assets principais
+- App funciona completamente offline após primeira visita
 
-## What technologies are used for this project?
+## 📁 Estrutura do Projeto
 
-This project is built with:
+```
+src/
+├── components/
+│   ├── Layout.tsx           # Layout principal com navegação
+│   └── ui/                  # Componentes shadcn
+├── contexts/
+│   └── DataContext.tsx      # Context para gestão de dados
+├── lib/
+│   ├── db.ts               # IndexedDB setup e operações
+│   ├── seed.ts             # Dados iniciais (59 serviços)
+│   ├── types.ts            # TypeScript interfaces
+│   ├── utils-format.ts     # Formatação (moeda, data, OS)
+│   ├── pdf-generator.ts    # Geração de PDF
+│   ├── excel-exporter.ts   # Exportação Excel
+│   ├── share-utils.ts      # Web Share API
+│   └── pwa-utils.ts        # PWA utilities
+├── pages/
+│   ├── Dashboard.tsx       # Página inicial
+│   ├── Services.tsx        # Gestão de serviços
+│   ├── History.tsx         # Histórico de orçamentos
+│   └── Settings.tsx        # Configurações
+└── main.tsx               # Entry point
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 📊 Dados Iniciais
 
-## How can I deploy this project?
+O app vem com **59 serviços pré-cadastrados** organizados em categorias:
 
-Simply open [Lovable](https://lovable.dev/projects/ff52bcc7-b5b4-4a03-bdc4-d17cf4c5b4ed) and click on Share -> Publish.
+- Manutenção Preventiva (10 serviços)
+- Manutenção Corretiva (8 serviços)
+- Manutenção Preditiva (5 serviços)
+- Higienização / Limpeza Profunda (6 serviços)
+- Recarga de Gás Refrigerante (4 serviços)
+- Serviços Elétricos e Eletrônicos (6 serviços)
+- Serviços Mecânicos e Estruturais (5 serviços)
+- Instalação e Reinstalação (5 serviços)
+- Manutenção Administrativa (4 serviços)
+- Serviços Especiais (6 serviços)
 
-## Can I connect a custom domain to my Lovable project?
+## 🔐 Backup e Restauração
 
-Yes, you can!
+### Exportar Backup
+1. Acesse "Configurações"
+2. Clique em "Exportar Backup JSON"
+3. Arquivo será baixado com data no nome
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### Importar Backup
+1. Acesse "Configurações"
+2. Clique em "Importar Backup JSON"
+3. Selecione o arquivo `.json` exportado
+4. Todos os dados serão restaurados
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+## 📝 Formato do Orçamento (PDF)
+
+O PDF gerado segue layout profissional:
+- **Cabeçalho**: Logo, dados da empresa, nº OS, data
+- **Cliente**: Nome, telefone, documento, endereço
+- **Serviços**: Tabela com nome, categoria, qtd, unidade, unitário, subtotal
+- **Totais**: Subtotal, desconto, impostos, taxa, total destacado
+- **Rodapé**: Validade, condições, assinaturas
+
+## 🎯 Próximos Passos
+
+Para completar o app, ainda falta implementar:
+
+1. **Página de Builder de Orçamento** (`/quote`)
+   - Form de cliente
+   - Seletor de serviços (multiselect)
+   - Cálculos automáticos
+   - Autosave
+
+2. **Página de Preview** (`/preview/:id`)
+   - WYSIWYG do PDF
+   - Botões de ação (PDF, Excel, Compartilhar)
+
+3. **Integração das Funções de Export**
+   - PDF multipágina
+   - Excel com formatação
+   - WhatsApp/Share
+
+## 📱 Suporte a Navegadores
+
+- Chrome/Edge (recomendado)
+- Firefox
+- Safari
+- Mobile browsers (Android/iOS)
+
+## 🤝 Autor
+
+**Allan Clauzen** - ArClean
+
+---
+
+**Desenvolvido com** 💚 **usando Lovable.dev**
