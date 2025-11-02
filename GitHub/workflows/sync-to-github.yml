@@ -1,0 +1,29 @@
+name: Sync Lovable to GitHub
+
+on:
+  push:
+    branches:
+      - main
+      - principal
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Lovable repo
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "Lucas Gabriel"
+          git config --global user.email "lucasgabriel.santosd3@gmail.com"
+
+      - name: Push to GitHub
+        env:
+          GIT_TOKEN: ${{ secrets.GHP_8C895JCJBV57V04MWDXYN8SQFXMZM2SMTBT }}
+        run: |
+          git remote remove origin || true
+          git remote add origin https://lucasdev-perfil2:${GIT_TOKEN}@github.com/lucasdev-perfil2/arclean-pro.git
+          git branch -M main
+          git push -u origin main --force
