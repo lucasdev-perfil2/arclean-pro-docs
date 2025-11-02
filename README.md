@@ -176,7 +176,7 @@ Para completar o app, ainda falta implementar:
 
 ## 🤝 Autor
 
-**Allan Clauzen** - ArClean
+**Lucas Gabriel Bittencourt** - ArClean
 
 ---
 
