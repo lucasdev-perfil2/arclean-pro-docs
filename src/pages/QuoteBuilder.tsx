@@ -171,16 +171,17 @@ export default function QuoteBuilder() {
     <Layout>
       <div className="space-y-6">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0">
           <div>
-            <h1 className="text-3xl font-bold">{id ? 'Editar' : 'Novo'} Orçamento</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold">{id ? 'Editar' : 'Novo'} Orçamento</h1>
             <p className="text-muted-foreground">{quote.osNumber}</p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
             <Button
               variant="outline"
               onClick={() => handleSave(false)}
               disabled={isSaving}
+              className="w-full sm:w-auto"
             >
               <Save className="w-4 h-4 mr-2" />
               Salvar Rascunho
@@ -188,6 +189,7 @@ export default function QuoteBuilder() {
             <Button
               onClick={() => handleSave(true)}
               disabled={isSaving}
+              className="w-full sm:w-auto"
             >
               <Eye className="w-4 h-4 mr-2" />
               Visualizar & Finalizar

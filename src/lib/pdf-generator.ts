@@ -9,13 +9,22 @@ export async function generatePDF(quote: Quote, company: Company): Promise<Blob>
     throw new Error('Preview element not found');
   }
 
+  // Store original width for responsive elements
+  const originalWidth = element.style.width;
+  element.style.width = '794px'; // A4 width in pixels at 96 DPI
+  
   // Create canvas from HTML
   const canvas = await html2canvas(element, {
     scale: 2,
     useCORS: true,
     logging: false,
     backgroundColor: '#ffffff',
+    width: 794,
+    windowWidth: 794,
   });
+  
+  // Restore original width
+  element.style.width = originalWidth;
 
   const imgData = canvas.toDataURL('image/png');
   const pdf = new jsPDF('p', 'mm', 'a4');

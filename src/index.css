@@ -6,6 +6,7 @@
 @media print {
   @page {
     margin: 1cm;
+    size: A4;
   }
   
   body {
@@ -23,6 +24,32 @@
   
   .print\:max-w-none {
     max-width: none !important;
+  }
+  
+  .print\:p-8 {
+    padding: 2rem !important;
+  }
+  
+  #pdf-preview-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 10pt !important;
+  }
+  
+  #pdf-preview-content h1 {
+    font-size: 18pt !important;
+  }
+  
+  #pdf-preview-content h2 {
+    font-size: 14pt !important;
+  }
+  
+  #pdf-preview-content h3 {
+    font-size: 12pt !important;
+  }
+  
+  #pdf-preview-content table {
+    font-size: 9pt !important;
   }
 }
 
